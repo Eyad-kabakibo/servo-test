@@ -23,7 +23,7 @@ void loop() {
  
  int LEFT_SENSOR = digitalRead(A0);
  int RIGHT_SENSOR = digitalRead(A1);
-  
+ obstacul_detect();
 if(RIGHT_SENSOR==0 && LEFT_SENSOR==0) {
   forward();
 }
@@ -89,3 +89,39 @@ void Stop()
       digitalWrite(in3, LOW);
       digitalWrite(in4, LOW);
 }
+void obstacul_detect(){
+  if (distance() <= 6){
+    Stop();
+    delay(100);
+    right();
+    delay(350);
+    forward();
+    delay(150);
+    left();
+    delay(180);
+    forward();
+    delay(100);
+    left();
+    delay(280);
+    forward();
+    delay(150);
+
+    }
+   
+  }
+int distance()
+{
+  long duration; 
+  int distance;
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  // Sets the trigPin HIGH (ACTIVE) for 10 microseconds
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  duration = pulseIn(echoPin, HIGH);
+  distance = duration * 0.034 / 2;
+  Serial.println(distance);
+  return distance;
+  }
