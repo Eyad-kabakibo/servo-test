@@ -1,3 +1,10 @@
+#define in1 9
+#define in2 8
+#define in3 7
+#define in4 6
+#define enA 10
+#define enB 5
+
 int M1_Speed = 200; 
 int M2_Speed = 200;
 int LeftRotationSpeed = 150;
